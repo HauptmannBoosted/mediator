@@ -78,7 +78,7 @@ typedef struct {
     uint32_t destination_reseller_cost;
     uint32_t destination_customer_cost;
 
-    char furnished_charging_info[256];
+    GString *furnished_charging_info;
     char header_diversion[2048];
     char header_pai[2048];
     char header_u2u[256];

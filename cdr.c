@@ -678,7 +678,7 @@ static int cdr_parse_dstleg_json(json_object *json, cdr_entry_t *cdr)
     }
 
     // furnished_charging_info
-    if (!cdr_parse_json_get_strbuf(json, "fci", cdr->furnished_charging_info)) {
+    if (!cdr_parse_json_get_strbuf(json, "fci", cdr->furnished_charging_info->str)) {
         L_ERROR("Call-Id '%s' does not contain 'fci' key (furnished charging info), '%s'", cdr->call_id, json_object_get_string(json));
         goto err;
     }
@@ -1225,7 +1225,7 @@ static int cdr_parse_dstleg_list(char *dstleg, cdr_entry_t *cdr)
         return -1;
     }
     *tmp1 = '\0';
-    g_strlcpy(cdr->furnished_charging_info, tmp2, sizeof(cdr->furnished_charging_info));
+    g_strlcpy(cdr->furnished_charging_info->str, tmp2, sizeof(cdr->furnished_charging_info));
     *tmp1 = MED_SEP;
     tmp2 = ++tmp1;
 
