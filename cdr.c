@@ -1226,7 +1226,7 @@ static int cdr_parse_dstleg_list(char *dstleg, cdr_entry_t *cdr)
         return -1;
     }
     *tmp1 = '\0';
-    g_strlcpy(cdr->furnished_charging_info->str, tmp2, sizeof(cdr->furnished_charging_info));
+    cdr->furnished_charging_info = g_string_new(tmp2);
     *tmp1 = MED_SEP;
     tmp2 = ++tmp1;
 
