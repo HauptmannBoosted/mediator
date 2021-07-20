@@ -670,6 +670,7 @@ static int cdr_parse_dstleg_json(json_object *json, cdr_entry_t *cdr)
     }
     g_strlcpy(cdr->destination_user_out, json_object_get_string(temp_value), sizeof(cdr->destination_user_out));
     uri_unescape(cdr->destination_user_out);
+    cdr->furnished_charging_info = g_string_new("");
 
     // destination_lnp_type
     if (!cdr_parse_json_get_strbuf(json, "lnp_t", cdr->destination_lnp_type)) {
